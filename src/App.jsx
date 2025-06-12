@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import "./App.scss";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { fetchMultiplePokemonById } from "./RTK/thunk";
 import { Link, Route, Routes } from "react-router-dom";
 import Main from "./pages/Main";
@@ -10,8 +10,7 @@ import Favorite from "./pages/Favorite";
 
 function App() {
   const dispatch = useDispatch();
-  const pokemonData = useSelector((state) => state.pokemon);
-  console.log(pokemonData);
+
   useEffect(() => {
     dispatch(fetchMultiplePokemonById(151));
   }, []);
@@ -25,7 +24,7 @@ function App() {
         <Link to={"search"}>검색</Link>
         <Link to={"favorite"}>찜목록</Link>
       </nav>
-      <main className="flex justify-center">
+      <main className="flex flex-wrap gap-[20px] pt-[20px] justify-center">
         <Routes>
           <Route path={"/"} element={<Main />} />
           <Route path={"/detail/:pokemonId"} element={<Detail />} />
