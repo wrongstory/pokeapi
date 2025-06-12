@@ -10,7 +10,12 @@ function App() {
   useEffect(() => {
     dispatch(fetchMultiplePokemonById(151));
   }, []);
-  return <></>;
+
+  return (
+    <>
+      <h1 className="text-[40px] text-center">포켓몬 도감</h1>
+    </>
+  );
 }
 
 export default App;
